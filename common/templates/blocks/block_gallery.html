@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="container">
+    <div class="row">
+        {% for block in self.images %}
+
+        {% if self.aspect  == "original" %}
+        {% image block width-720 as image %}
+
+        {% elif self.aspect == 'square' %}
+        {% image block fill-720x720 as image %}
+        
+        {% elif self.aspect == 'portrait' %}
+        {% image block fill-540x720 as image %}
+        
+        {% elif self.aspect == 'landscape' %}
+        {% image block fill-720x540 as image %}
+
+        {% endif %}
+        <div class="col-3 py-2">
+            <a href="{{ block.file.url }}" target="_blank">
+                <img class="aspect-{{self.aspect}}" src="{{image.url}}" alt="{{image.alt}}">
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% if self.caption %}
+    <p>
+        {{self.caption}}
+    </p>
+    {% endif %}
+</div>

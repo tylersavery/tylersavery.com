@@ -1,0 +1,42 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="container py-1">
+    <div class="row align-items-center
+    {% if self.alignment == 'center' %} text-center {% endif %} 
+    ">
+        {% if self.image %}
+        <div class="
+            col-12 
+            {% if self.alignment != 'center' %} col-md-6 {% endif %} 
+            {% if self.alignment == 'right' %} order-md-1 {% endif %}
+        ">
+            {% image self.image fill-512x512 as image %}
+            <img src="{{image.url}}" alt="{{image.alt}}" />
+        </div>
+        {% endif %}
+        <div class="
+            col-12 
+            {% if self.alignment != 'center' %} col-md-6 {% endif %} 
+            {% if self.alignment == 'right' %} order-md-0 {% endif %}
+            {% if self.alignment == 'center' %} py-2 {% endif %} 
+        ">
+            <h2 class="mt-2 mt-md-0">{{self.title}}</h2>
+            {% if self.body %}
+            <p>{{self.body}}</p>
+            {% endif %} 
+
+            <div class="text-right">
+
+                {% if self.external_url %}
+                <a href="{{self.external_url}}" target="_blank" class="btn btn-primary">{{self.button_label}}</a>
+                
+                {% elif self.page %}
+                <a href="{{self.page.url}}" class="btn btn-primary">{{self.button_label}}</a>
+                
+                {% elif self.document %}
+                <a href="{{self.document.url}}" class="btn btn-primary">{{self.button_label}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

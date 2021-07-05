@@ -1,0 +1,17 @@
+<div class="social-links">
+    {% if settings.configuration.SocialMediaSettings.facebook %}
+        <a href="{{ settings.configuration.SocialMediaSettings.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
+    {% endif %}
+    {% if settings.configuration.SocialMediaSettings.twitter %}
+        <a href="{{ settings.configuration.SocialMediaSettings.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+    {% endif %}
+    {% if settings.configuration.SocialMediaSettings.instagram %}
+        <a href="{{ settings.configuration.SocialMediaSettings.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+    {% endif %}
+    {% if settings.configuration.SocialMediaSettings.youtube %}
+        <a href="{{ settings.configuration.SocialMediaSettings.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+    {% endif %}
+    {% if settings.configuration.SocialMediaSettings.linkedin %}
+        <a href="{{ settings.configuration.SocialMediaSettings.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    {% endif %}
+</div>

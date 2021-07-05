@@ -1,0 +1,26 @@
+
+*.db
+
+### OS ###
+**/.DS_Store
+**/Thumbs.db
+
+### IDE ###
+.vscode
+.idea
+
+### Project ###
+static
+*.mo
+
+### Python ###
+__pycache__
+*.py[cod]
+
+### Environment ###
+.env
+venv
+
+### Node ###
+node_modules
+dist

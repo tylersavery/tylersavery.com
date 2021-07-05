@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="container">
+
+    {% image self.image width-512 as image %}
+    <img src="{{image.url}}" alt="{{image.title}}" />
+    
+    {% if self.caption %}
+    <p>
+        {{self.caption}}
+    </p>
+    {% endif %}
+</div>

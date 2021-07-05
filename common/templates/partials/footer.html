@@ -1,0 +1,12 @@
+{% load wagtailsettings_tags %}{% get_settings %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col" align="center">
+                {% if settings.configuration.LegalSettings.copyright %}
+                    <p class="m-0">{{ settings.configuration.LegalSettings.copyright | safe }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</footer>

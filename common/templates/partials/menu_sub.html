@@ -1,0 +1,14 @@
+{% load menu_tags %}
+{% if menu_items %}
+    <div class="menu-sub dropdown-menu" aria-labelledby="ddtoggle_{{ parent_page.pk }}">
+        {% for item in menu_items %}
+            <a class="dropdown-item{% if item.has_children_in_menu %} dropdown-toggle{% endif %}"
+                    {% if item.has_children_in_menu %} id="ddtoggle_{{ item.pk }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %} href="{{ item.href }}">
+                {{ item.text }}{% if item.has_children_in_menu %} <span class="caret"></span>{% endif %}
+                {% if item.active_class %} <span class="sr-only">(current)</span>{% endif %}</a>
+            {% if item.has_children_in_menu %}
+                {% sub_menu item template=current_template %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

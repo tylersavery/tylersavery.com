@@ -1,0 +1,9 @@
+<div class="container text-{{self.alignment}}">
+    {% if self.size == 'large' %}
+    <h1>{{self.body}}</h1>
+    {% elif self.size == 'medium' %}
+    <h2>{{self.body}}</h2>
+    {% elif self.size == 'small' %}
+    <h3>{{self.body}}</h3>
+    {% endif %}
+</div>

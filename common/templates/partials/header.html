@@ -1,0 +1,17 @@
+{% load menu_tags %}
+<header>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand">
+            Tyler Codes
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-main">
+            {% main_menu max_levels=2 template="partials/menu_main.html" %}
+            <div class="menu-item">
+                {% include "partials/social_links.html" %}
+            </div>
+        </div>
+    </nav>
+</header>
