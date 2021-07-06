@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="container">
+<div class="container spotlight-group">
     <div class="row">
         {% for block in self.images %}
 
@@ -18,7 +18,7 @@
 
         {% endif %}
         <div class="col-3 py-2">
-            <a href="{{ block.file.url }}" target="_blank">
+            <a href="{{ block.file.url }}" class="spotlight" >
                 <img class="aspect-{{self.aspect}}" src="{{image.url}}" alt="{{image.alt}}">
             </a>
         </div>

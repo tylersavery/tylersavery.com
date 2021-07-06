@@ -1,8 +1,12 @@
+@import "./scss/variables";
 @import "~bootstrap";
+@import "./scss/bootswatch";
 
 @import "./scss/colors";
 @import "./scss/typography";
 @import "./scss/iconography";
+@import "./scss/mixins";
+@import "./scss/global";
 
 @import "./scss/pages/page_about";
 @import "./scss/pages/page_example";
@@ -21,6 +25,7 @@
 @import "./scss/blocks/block_gallery";
 @import "./scss/blocks/block_heading";
 @import "./scss/blocks/block_image";
+@import "./scss/blocks/block_rich_text";
 @import "./scss/blocks/block_spacer";
 @import "./scss/blocks/block_video";
 @import "./scss/blocks/block_video_list";

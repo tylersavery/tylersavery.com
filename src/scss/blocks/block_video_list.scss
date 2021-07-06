@@ -1,3 +1,5 @@
 .block-video_list {
-    
+    p {
+        @include text-caption;
+    }
 }

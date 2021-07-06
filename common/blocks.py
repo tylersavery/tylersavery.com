@@ -78,10 +78,24 @@ class HeadingBlock(blocks.StructBlock):
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.CharBlock(required=False)
+    size = blocks.ChoiceBlock(choices=Size.choices, default=Size.LARGE)
+    aspect = blocks.ChoiceBlock(choices=Aspect.choices, default=Aspect.ORIGINAL)
+    is_full_width = blocks.BooleanBlock(default=False, required=False)
+    enable_lightbox = blocks.BooleanBlock(default=False, required=False)
 
     class Meta:
         icon = "image"
         template = "blocks/block_image.html"
+
+
+class RichTextBlock(blocks.StructBlock):
+    body = blocks.RichTextBlock()
+    size = blocks.ChoiceBlock(choices=Size.choices, default=Size.MEDIUM)
+    alignment = blocks.ChoiceBlock(choices=Alignment.choices, default=Alignment.LEFT)
+
+    class Meta:
+        icon = "pilcrow"
+        template = "blocks/block_rich_text.html"
 
 
 class SpacerBlock(blocks.StructBlock):
@@ -117,6 +131,7 @@ DEFAULT_BLOCKS = [
     ("heading", HeadingBlock()),
     ("image", ImageBlock()),
     ("code_snippet", CodeSnippetBlock()),
+    ("rich_text", RichTextBlock()),
     ("spacer", SpacerBlock()),
     ("video", VideoBlock()),
     ("video_list", VideoListBlock()),

@@ -1,13 +1,49 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
 
-<div class="container">
+{% if not self.is_full_width %}
+<div class="container text-center">
+{% endif %}
 
-    {% image self.image width-512 as image %}
-    <img src="{{image.url}}" alt="{{image.title}}" />
-    
+{% if self.is_full_width %}
+
+{% image self.image width-1200 as image %}
+
+{% elif self.aspect  == "original" %}
+{% image self.image width-1200 as image %}
+
+{% elif self.aspect == 'square' %}
+{% image self.image fill-1200x1200 as image %}
+
+{% elif self.aspect == 'portrait' %}
+{% image self.image fill-675x1200 as image %}
+
+{% elif self.aspect == 'landscape' %}
+{% image self.image fill-1200x675 as image %}
+
+{% endif %}
+
+    {% if self.enable_lightbox %}
+    <div class="spotlight-group"> 
+    <a class="spotlight" href="{{self.image.file.url}}">
+    {% endif %}
+        <img 
+            src="{{image.url}}" 
+            alt="{{image.title}}"
+            class="
+                {% if self.is_full_width %} w-100 {% endif %}
+                size-{{self.size}}
+            "
+        />
+    {% if self.enable_lightbox %} 
+    </a>
+    </div>
+    {% endif %}
     {% if self.caption %}
-    <p>
+    <p class="py-3">
         {{self.caption}}
     </p>
     {% endif %}
+
+    {% if not self.is_full_width %}
 </div>
+{% endif %}

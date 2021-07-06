@@ -22,6 +22,7 @@ class SocialMediaSettings(BaseSetting):
     instagram = models.URLField(blank=True, help_text="Instagram URL")
     youtube = models.URLField(blank=True, help_text="YouTube Channel URL")
     linkedin = models.URLField(blank=True, help_text="LinkedIn URL")
+    github = models.URLField(blank=True, help_text="Github URL")
 
     panels = [
         FieldPanel("facebook"),
@@ -29,6 +30,7 @@ class SocialMediaSettings(BaseSetting):
         FieldPanel("instagram"),
         FieldPanel("youtube"),
         FieldPanel("linkedin"),
+        FieldPanel("github"),
     ]
 
     class Meta:

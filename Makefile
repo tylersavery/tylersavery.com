@@ -9,7 +9,6 @@ run:
 
 release:
 	python manage.py migrate --noinput
-	python manage.py compilemessages
 
 web:
 	gunicorn project.wsgi --log-file -

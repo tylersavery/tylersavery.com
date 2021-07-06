@@ -1,0 +1,6 @@
+@mixin divider {
+    height: 2px;
+    background-color: $secondary;
+    border: none;
+    width: 100%;
+}

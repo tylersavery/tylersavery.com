@@ -1,8 +1,10 @@
 import "bootstrap";
-
 import "./app.scss";
-
 import "./js/iconography";
+import spotlight from "spotlight.js";
 
-import { helloWorld } from "./js/example";
-helloWorld();
+import { initEditor } from "./js/editor";
+import { wrapRichTextIframes } from "./js/iframe-wrap";
+
+initEditor();
+wrapRichTextIframes();

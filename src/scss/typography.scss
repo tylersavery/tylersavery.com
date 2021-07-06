@@ -1,17 +1,28 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto|Open+Sans:400italic,700italic,400,700");
+@import url("https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
-$roboto: 'Roboto', serif;
-$open-sans: 'Open Sans', sans-serif;
+$source-sans-pro: "Source Sans Pro", sans-serif;
+$notica-text: "Noticia Text", sans-serif;
 
-$body-font: $roboto;
-$header-font: $open-sans;
+$body-font: $source-sans-pro;
+$header-font: $notica-text;
 
 body {
-  font-family: $body-font;
-  font-weight: normal;
+    font-family: $body-font;
+    font-weight: normal;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font;
-  font-weight: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $header-font;
+    font-weight: normal;
+}
+
+@mixin text-caption {
+    font-style: italic;
+    font-size: 16px;
+    text-align: center;
 }

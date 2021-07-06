@@ -18,4 +18,7 @@ library.add(faYoutube);
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
 library.add(faLinkedinIn);
 
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+library.add(faGithub);
+
 dom.watch();

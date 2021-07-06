@@ -1,13 +1,13 @@
 {% load wagtailcore_tags wagtailembeds_tags %}
-<div class="container text-center">
+<div class="container text-center py-3">
     {% if self.title %}
-    <h3>{{self.title}}</h3>
+    <h3 class="mb-3">{{self.title}}</h3>
     {% endif %}
     
     <div class="row justify-content-center">
         
         {% for block in self.videos %}
-        <div class="col-12 col-md-6 pb-3">
+        <div class="col-12 col-md-4 pb-3">
             <div class="embed-responsive embed-responsive-16by9">
                 {% embed block.embed.url %}
             </div>
