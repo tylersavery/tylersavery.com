@@ -1,19 +1,19 @@
 .block-cta {
-    a {
-        img {
-            width: 100%;
-            border-radius: 50%;
-            filter: saturate(0);
-            transition: filter 0.3s;
-            // max-width: 300px;
+    img {
+        width: 100%;
+        border-radius: 50%;
+        filter: saturate(0);
+        transition: filter 0.3s;
+        // max-width: 300px;
 
-            @include media-breakpoint-down(sm) {
-                width: 50%;
-                margin: 0 auto;
-                display: block;
-            }
+        @include media-breakpoint-down(sm) {
+            width: 50%;
+            margin: 0 auto;
+            display: block;
         }
+    }
 
+    a {
         &:hover {
             img {
                 filter: saturate(1);

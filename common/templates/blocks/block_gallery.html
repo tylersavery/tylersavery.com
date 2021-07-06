@@ -22,7 +22,7 @@
             {% if self.enable_lightbox and not block.page_link and not block.external_link %}
             <a href="{{ block.file.url }}" class="spotlight">
             {% elif block.page_link %}
-            <a href="{{ block.page_link }}">
+            <a href="{{ block.page_link.url }}">
             {% elif block.external_link %}
             <a href="{{ block.external_link }}" target="_blank">
             {% endif %}

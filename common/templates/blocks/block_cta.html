@@ -22,11 +22,13 @@
                     {% elif self.document %}
                     <a href="{{self.document.url}}">
                     {% endif %}
-                      
-        
+                    
                         {% image self.image fill-512x512 as image %}
                         <img src="{{image.url}}" alt="{{image.alt}}" />
+                    
+                    {% if self.external_url or self.page or self.document %}
                     </a>
+                    {% endif %}
                 </div>
                 {% endif %}
                 <div class="
