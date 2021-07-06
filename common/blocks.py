@@ -22,14 +22,23 @@ class CodeSnippetBlock(blocks.StructBlock):
 class TextColumnBlock(blocks.StructBlock):
     body = blocks.RichTextBlock()
     width = blocks.IntegerBlock(min_value=1, max_value=12)
+    offset = blocks.IntegerBlock(min_value=0, max_value=11, default=0)
+    alignment = blocks.ChoiceBlock(
+        choices=[
+            (Alignment.LEFT.value, Alignment.LEFT.label),
+            (Alignment.RIGHT.value, Alignment.RIGHT.label),
+            (Alignment.CENTER.value, Alignment.CENTER.label),
+        ],
+        default=Alignment.LEFT,
+    )
 
 
-class TextColumns(blocks.StructBlock):
+class TextColumnsBlock(blocks.StructBlock):
     columns = blocks.ListBlock(TextColumnBlock())
 
     class Meta:
         icon = "column"
-        template = "blocks/block_column.html"
+        template = "blocks/block_text_column.html"
 
 
 class CTABlock(blocks.StructBlock):
@@ -155,6 +164,7 @@ DEFAULT_BLOCKS = [
     ("code_snippet", CodeSnippetBlock()),
     ("rich_text", RichTextBlock()),
     ("spacer", SpacerBlock()),
+    ("text_column", TextColumnsBlock()),
     ("video", VideoBlock()),
     ("video_list", VideoListBlock()),
 ]

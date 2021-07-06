@@ -1,11 +1,13 @@
-
-
-<div class="row">
-    {% for block in self.columns %}
-    <div class="col-12 col-md-{{block.width}}">
-        <div class="block-rich_text">
-            {{block.body}}
+<div class="container">
+    <div class="row">
+        {% for block in self.columns %}
+        <div class="col-12 col-md-{{block.width}} offset-{{block.offset}}">
+            <div class="block-rich_text">
+                <div class="text-{{block.alignment}}">
+                    {{block.body}}
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
