@@ -1,0 +1,11 @@
+
+
+<div class="row">
+    {% for block in self.columns %}
+    <div class="col-12 col-md-{{block.width}}">
+        <div class="block-rich_text">
+            {{block.body}}
+        </div>
+    </div>
+    {% endfor %}
+</div>

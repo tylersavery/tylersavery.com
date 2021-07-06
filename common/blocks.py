@@ -15,9 +15,21 @@ class CodeSnippetBlock(blocks.StructBlock):
     code = blocks.RawHTMLBlock()
 
     class Meta:
-
         icon = "code"
         template = "blocks/block_code_snippet.html"
+
+
+class TextColumnBlock(blocks.StructBlock):
+    body = blocks.RichTextBlock()
+    width = blocks.IntegerBlock(min_value=1, max_value=12)
+
+
+class TextColumns(blocks.StructBlock):
+    columns = blocks.ListBlock(TextColumnBlock())
+
+    class Meta:
+        icon = "column"
+        template = "blocks/block_column.html"
 
 
 class CTABlock(blocks.StructBlock):
@@ -54,17 +66,6 @@ class DividerBlock(blocks.StructBlock):
         template = "blocks/block_divider.html"
 
 
-class GalleryBlock(blocks.StructBlock):
-    images = blocks.ListBlock(ImageChooserBlock())
-    caption = blocks.TextBlock(required=False)
-    size = blocks.ChoiceBlock(choices=Size.choices, default=Size.LARGE)
-    aspect = blocks.ChoiceBlock(choices=Aspect.choices, default=Aspect.ORIGINAL)
-
-    class Meta:
-        icon = "table"
-        template = "blocks/block_gallery.html"
-
-
 class HeadingBlock(blocks.StructBlock):
     body = blocks.TextBlock()
     alignment = blocks.ChoiceBlock(choices=Alignment.choices, default=Alignment.CENTER)
@@ -82,10 +83,31 @@ class ImageBlock(blocks.StructBlock):
     aspect = blocks.ChoiceBlock(choices=Aspect.choices, default=Aspect.ORIGINAL)
     is_full_width = blocks.BooleanBlock(default=False, required=False)
     enable_lightbox = blocks.BooleanBlock(default=False, required=False)
+    page_link = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
 
     class Meta:
         icon = "image"
         template = "blocks/block_image.html"
+
+
+class GalleryImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    caption = blocks.CharBlock(required=False)
+    page_link = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
+
+
+class GalleryBlock(blocks.StructBlock):
+    images = blocks.ListBlock(GalleryImageBlock())
+    caption = blocks.TextBlock(required=False)
+    size = blocks.ChoiceBlock(choices=Size.choices, default=Size.LARGE)
+    aspect = blocks.ChoiceBlock(choices=Aspect.choices, default=Aspect.ORIGINAL)
+    enable_lightbox = blocks.BooleanBlock(default=True, required=False)
+
+    class Meta:
+        icon = "table"
+        template = "blocks/block_gallery.html"
 
 
 class RichTextBlock(blocks.StructBlock):

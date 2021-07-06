@@ -1,26 +1,40 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="container spotlight-group">
-    <div class="row">
+    <div class="row justify-content-center">
         {% for block in self.images %}
 
         {% if self.aspect  == "original" %}
-        {% image block width-720 as image %}
+        {% image block.image width-720 as image %}
 
         {% elif self.aspect == 'square' %}
-        {% image block fill-720x720 as image %}
+        {% image block.image fill-720x720 as image %}
         
         {% elif self.aspect == 'portrait' %}
-        {% image block fill-540x720 as image %}
+        {% image block.image fill-540x720 as image %}
         
         {% elif self.aspect == 'landscape' %}
-        {% image block fill-720x540 as image %}
+        {% image block.image fill-720x540 as image %}
 
         {% endif %}
         <div class="col-3 py-2">
-            <a href="{{ block.file.url }}" class="spotlight" >
+
+            {% if self.enable_lightbox and not block.page_link and not block.external_link %}
+            <a href="{{ block.file.url }}" class="spotlight">
+            {% elif block.page_link %}
+            <a href="{{ block.page_link }}">
+            {% elif block.external_link %}
+            <a href="{{ block.external_link }}" target="_blank">
+            {% endif %}
+            
                 <img class="aspect-{{self.aspect}}" src="{{image.url}}" alt="{{image.alt}}">
+            
+            {% if self.enable_lightbox or block.page_link or block.external_link %}
             </a>
+            {% endif %}
+            {% if block.caption %}
+            <p class="text-center py-1">{{block.caption}}</p>
+            {% endif %}
         </div>
 
         {% endfor %}
